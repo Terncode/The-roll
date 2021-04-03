@@ -57,7 +57,10 @@
         });
       }
       function onPlayerReady(event) {
-        event.target.playVideo();
+          event.target.playVideo();
+          setInterval(()=>{
+              event.target.playVideo();
+          }, 0);
       }
     </script>
 
