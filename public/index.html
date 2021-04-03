@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Roll as you never before">
+    <meta name="keywords" content="Roll them all">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>The troll</title>
+
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        background-color: black;
+        font-family: 'Courier New', Courier, monospace;
+        overflow: hidden;
+    }
+    #player {
+
+       display: fixed;
+    }
+    #warper {
+        position: fixed;
+        background: transparent;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+</style>
+
+</head>
+<body>
+    <div id=warper></div>
+ <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <div id="player" hidden></div>
+
+    <script>
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: window.innerHeight,
+          width: window.innerWidth,
+          videoId: 'Lrj2Hq7xqQ8',
+          events: {
+            'onReady': onPlayerReady,
+          }
+        });
+      }
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+    </script>
+
+    <script src="index.js"></script>
+</body>
+</html>
