@@ -29,12 +29,38 @@
         width: 100%;
         height: 100%;
     }
+    #black {
+        position: fixed;
+        background: blue;
+        font-weight: bolder;
+        left: 0;
+        top: 0;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+
+    }
+    button {
+        color: white;
+        background-color: black;
+        border: none;
+        size: 20px;
+        padding: 5px;
+        margin: 5px;
+    }
 
 </style>
 
 </head>
 <body>
-    <div id=warper></div>
+    <div id="warper"></div>
+    <div id="black">
+
+        Please accept cookies 
+        <button>Accept</button>
+
+    </div>
  <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
     <div id="player" hidden></div>
 
@@ -56,11 +82,10 @@
           }
         });
       }
+      window.ready = false;
       function onPlayerReady(event) {
-          event.target.playVideo();
-          setInterval(()=>{
-              event.target.playVideo();
-          }, 0);
+          window.ready = true;
+          
       }
     </script>
 
