@@ -12,7 +12,8 @@ window.addEventListener("click", () => {
     const dvdSaucer = new FlyingSaucer(videoId);
     dvdSaucer.summon();
     const black = document.getElementById("black");
-
+    const testRoller = new TextRoll("You have been rick rolled in a professional way. ");
+    testRoller.start();
     if (black) {
       try {
         const parent = black.parentElement;
@@ -38,6 +39,5 @@ window.addEventListener("click", () => {
 
 
 });
-const testRoller = new TextRoll("You have been rick rolled in a professional way. ");
-testRoller.start();
+
 
