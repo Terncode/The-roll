@@ -10,14 +10,22 @@ writeHistory(videoId);
 window.addEventListener("click", () => {
   const run = () => {
     const md = new MobileDetect(window.navigator.userAgent);
-    if (md.phone()) {
-      location.href = `https://www.youtube.com/watch?v=${videoId}`;
-      return;
-    }
 
     (window as any).player.playVideo();
-    const dvdSaucer = new FlyingSaucer(videoId);
-    dvdSaucer.summon();
+    if (md.phone()) {
+      const frame = document.body;
+      if (frame.requestFullscreen) {
+        frame.requestFullscreen();
+      } else if ((frame as any).webkitRequestFullscreen) { /* Safari */
+        (frame as any).webkitRequestFullscreen();
+      } else if ((frame as any).msRequestFullscreen) { /* IE11 */
+        (frame as any).msRequestFullscreen();
+      }
+    } else {
+      const dvdSaucer = new FlyingSaucer(videoId);
+      dvdSaucer.summon();
+    }
+
     const black = document.getElementById("black");
     const testRoller = new TextRoll("You have been rick rolled in a professional way. ");
     testRoller.start();
