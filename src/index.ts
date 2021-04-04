@@ -1,4 +1,5 @@
 import MobileDetect = require("mobile-detect");
+import { BlockTab } from "./blockTab";
 import { FlyingSaucer } from "./FlyingSaucer";
 import { TextRoll } from "./RollingTest";
 import { writeHistory } from "./writeHistory";
@@ -22,8 +23,13 @@ window.addEventListener("click", () => {
         (frame as any).msRequestFullscreen();
       }
     } else {
-      const dvdSaucer = new FlyingSaucer(videoId);
-      dvdSaucer.summon();
+        const dvdSaucer = new FlyingSaucer(videoId);
+        dvdSaucer.summon();
+
+   
+     
+      
+
     }
 
     const black = document.getElementById("black");

@@ -1,4 +1,4 @@
-import { random } from "lodash";
+import { debounce, random } from "lodash";
 
 export class FlyingSaucer {
   private readonly maxStuck = 150;
@@ -12,8 +12,17 @@ export class FlyingSaucer {
   private increasingY = true;
   private xStuckCounter = 0;
   private yStuckCounter = 0;
+  private reset = 0;
+  private mouseIsMoving = true;
+  notMove = debounce(() => {
+    this.mouseIsMoving = false;
+  }, 300);
 
   constructor(private ytID: string) {
+    addEventListener("mousemove",() => {
+      this.mouseIsMoving = true;
+      this.notMove();
+    })
   }
 
   summon() {
@@ -46,8 +55,16 @@ export class FlyingSaucer {
     }
     this.window.focus();
 
-
-    this.window.moveBy(this.increasingX ? this.moveSpeed : -this.moveSpeed, this.increasingY ? this.moveSpeed : -this.moveSpeed);
+    if (this.mouseIsMoving) {
+      this.window.resizeTo(this.width, this.height);
+      this.window.moveBy(this.increasingX ? this.moveSpeed : -this.moveSpeed, this.increasingY ? this.moveSpeed : -this.moveSpeed);
+    } else {
+      const x = Math.abs(window.screenX % window.screen.width)
+      const y = Math.abs(window.screenY % window.screen.height)
+ 
+      this.window.resizeTo(window.screen.width  - random(0, 150), 20);
+      this.window.moveTo(x, y);
+    }
 
     this.lastX = this.window.screenX;
     this.lastY = this.window.screenY;

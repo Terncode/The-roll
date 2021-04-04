@@ -98,7 +98,9 @@
       window.ready = false;
       function onPlayerReady(event) {
           window.ready = true;
-          
+          window.addEventListener("resize", () => {
+              player.setSize(window.innerWidth, window.innerHeight)
+          });
       }
     </script>
 
