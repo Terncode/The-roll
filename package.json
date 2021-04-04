@@ -4,7 +4,6 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "b" : "echo test",
     "build": "webpack",
     "build:w": "webpack --watch --progress",
     "webpack-dev:watch": "webpack -w"
@@ -20,6 +19,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.21",
+    "mobile-detect": "^1.4.5",
     "save-as": "^0.1.8"
   }
 }

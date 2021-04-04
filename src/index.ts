@@ -1,3 +1,4 @@
+import MobileDetect = require("mobile-detect");
 import { FlyingSaucer } from "./FlyingSaucer";
 import { TextRoll } from "./RollingTest";
 import { writeHistory } from "./writeHistory";
@@ -8,6 +9,12 @@ writeHistory(videoId);
 
 window.addEventListener("click", () => {
   const run = () => {
+    const md = new MobileDetect(window.navigator.userAgent);
+    if (md.phone()) {
+      location.href = `https://www.youtube.com/watch?v=${videoId}`;
+      return;
+    }
+
     (window as any).player.playVideo();
     const dvdSaucer = new FlyingSaucer(videoId);
     dvdSaucer.summon();
@@ -36,8 +43,5 @@ window.addEventListener("click", () => {
   } else {
     run();
   }
-
-
 });
-
 
