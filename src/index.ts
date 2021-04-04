@@ -1,5 +1,4 @@
 import MobileDetect = require("mobile-detect");
-import { BlockTab } from "./blockTab";
 import { FlyingSaucer } from "./FlyingSaucer";
 import { TextRoll } from "./RollingTest";
 import { writeHistory } from "./writeHistory";
