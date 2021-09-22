@@ -4,7 +4,7 @@ import { TextRoll } from "./RollingTest";
 import { writeHistory } from "./writeHistory";
 
 
-const videoId = `YBDTqX_ZU`;
+const videoId = `dQw4w9WgXcQ`;
 writeHistory(videoId);
 
 window.addEventListener("click", () => {
@@ -24,10 +24,6 @@ window.addEventListener("click", () => {
     } else {
         const dvdSaucer = new FlyingSaucer(videoId);
         dvdSaucer.summon();
-
-   
-     
-      
 
     }
 
